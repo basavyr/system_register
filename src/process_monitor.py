@@ -142,6 +142,11 @@ class Process:
                 if(debug_mode):
                     print(
                         f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
+            except OSError:
+                output, errors = Utils.Return_Error_Tuple()
+                if(debug_mode):
+                    print(
+                        f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
             else:
                 # If no errors occur during the command execution
                 try:
