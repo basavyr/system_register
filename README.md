@@ -1,3 +1,4 @@
+[![Test-Register](https://github.com/basavyr/system_register/actions/workflows/test-register.yml/badge.svg)](https://github.com/basavyr/system_register/actions/workflows/test-register.yml)[![Dockerize-Register](https://github.com/basavyr/system_register/actions/workflows/docker-app.yml/badge.svg)](https://github.com/basavyr/system_register/actions/workflows/docker-app.yml)[![Release-Register](https://github.com/basavyr/system_register/actions/workflows/release-app.yml/badge.svg)](https://github.com/basavyr/system_register/actions/workflows/release-app.yml)
 # System Register
 
 Shows all active instances that run on a computing resource
