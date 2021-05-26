@@ -21,7 +21,13 @@ jobs:
         docker build . -t register-image
         docker container create --name register-container register-image
         docker start -i register-container
-    
+    - name: Create zipped app-package
+      run: |
+        sudo apt-get update
+        sudo apt-get install zip unzip gzip tar -qy
+        ls -l
+        zip -r register_app.zip src/
+        ls -l
     # - uses: actions/upload-artifact@v2
     #   with:
     #     name: ${{env.appName}}.zip
