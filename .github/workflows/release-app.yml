@@ -1,0 +1,32 @@
+name: Release-Register
+
+on:
+  workflow_run:
+    workflows: [ "Dockerize-Register" ]
+    types:
+      - completed
+
+jobs:
+
+  create-release:
+    name: Release apps
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ahmadnassri/action-workflow-run-wait@v1
+    - name: Prepare App 🚀
+      run: |
+        sudo apt-get update
+        sudo apt-get install zip gzip tar
+    - name: Create app archive 📦
+      run: |
+        zip -r register_app.zip src/
+    - name: Create release with artifact 🚀
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: false
+        title: "Register App 📖"
+        files: |
+          register_app.zip
