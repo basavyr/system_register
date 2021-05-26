@@ -139,17 +139,20 @@ class Process:
                 if(debug_mode):
                     print('There was an issue during command execution')
                 output, errors = Utils.Return_Error_Tuple()
-                print(f'Error: {error}')
+                if(debug_mode):
+                    print(f'Error: {error}')
                 if(debug_mode):
                     print(
                         f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
-            except OSError:
+            except OSError as error:
                 if(debug_mode):
                     print('There was an [OS] issue during command execution')
                 output, errors = Utils.Return_Error_Tuple()
                 if(debug_mode):
                     print(
                         f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
+                if(debug_mode):
+                    print(f'[OS] Error: {error}')
             else:
                 # If no errors occur during the command execution
                 try:
@@ -166,8 +169,8 @@ class Process:
                     executed_command_noShell.kill()
                     output, errors = Utils.Return_Error_Tuple()
                     if(debug_mode):
-                        print(f'There was an [OS] issue.\n{os_issue}')
-                        print(errors)
+                        print(f'There was an [OS] issue.\n{os_issue}\n')
+                        print(f'Command runtime error: {errors}')
                 else:
                     print(output, errors)
                     # if(debug_mode):
