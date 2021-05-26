@@ -24,7 +24,7 @@ class Monitoring:
             # check if the content of the process list is empty or not
             try:
                 with open(process_list_file, 'r+') as reader:
-                    proc_list = reader.readlines
+                    proc_list = reader.readlines()
             except Exception:
                 return 1
             if(len(proc_list) == 0):
@@ -36,7 +36,7 @@ class Monitoring:
         """read the process list (if it exists) and saves them to a list"""
         process_list_file = f'{process_list}.list'
         with open(process_list_file, 'r+') as reader:
-            proc_list = reader.readlines
+            proc_list = reader.readlines()
         return proc_list
 
 

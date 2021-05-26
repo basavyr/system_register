@@ -8,19 +8,23 @@ watch = register.Monitoring
 
 if __name__ == '__main__':
 
-    process = watch.PROCESSES["PY"]
-
-    x = reg.Create_Process_Register(process, 'test')
-    y = reg.Read_Process_Register(process)
-
-    try:
-        assert y[0] == 1, 'Error ocurred'
-    except AssertionError:
-        print('Errors ocurred')
+    process_list = 'PROCESSES'
+    check_process_file = watch.Check_External_Process_List(process_list)
+    if(check_process_file == -1):
+        process_list = watch.PROCESSES
     else:
-        print('It works')
-        print('Performing registry cleanup...')
-        reg.Clean_Process_Registers(process)
+        process_list = watch.Get_Processes_From_Process_List(process_list)
 
-    check_process_file = watch.Check_External_Process_List('PROCESSES')
-    print(check_process_file)
+    print(process_list)
+#
+    # x = reg.Create_Process_Register(process, 'test')
+    # y = reg.Read_Process_Register(process)
+#
+    # try:
+    # assert y[0] == 1, 'Error ocurred'
+    # except AssertionError:
+    # print('Errors ocurred')
+    # else:
+    # print('It works')
+    # print('Performing registry cleanup...')
+    # reg.Clean_Process_Registers(process)
