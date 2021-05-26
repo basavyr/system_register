@@ -106,67 +106,67 @@ class Process:
             return -1
         return real_instances
 
+    @staticmethod
+    def RunCommand(command):
+        """
+        Execute a shell-specific command within a Python method
 
-def RunCommand(command):
-    """
-    Execute a shell-specific command within a Python method
+        Uses the Popen function, from the subprocess module
 
-    Uses the Popen function, from the subprocess module
+        """
+        debug_mode = True
 
-    """
-    debug_mode = False
+        # cannot run ps command in non-shell mode
+        non_shell_mode = False
 
-    # cannot run ps command in non-shell mode
-    non_shell_mode = True
-
-    shell_cmd = Utils.Make_Shell_Command(command)
-    if(debug_mode):
-        print(f'shell command: {shell_cmd}')
-
-    command_name = Utils.extract_name(command)
-    if(debug_mode):
-        print(f'command name: {command_name}')
-
-    # execute the command outside the interactive shell
-    if(non_shell_mode):
+        shell_cmd = Utils.Make_Shell_Command(command)
         if(debug_mode):
-            print('SHELL mode is turned OFF')
-        # the command is called within a safe-mode try/except block
-        try:
-            executed_command_noShell = subprocess.Popen(shell_cmd,
-                                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        except FileNotFoundError:
+            print(f'shell command: {shell_cmd}')
+
+        command_name = Utils.extract_name(command)
+        if(debug_mode):
+            print(f'command name: {command_name}')
+
+        # execute the command outside the interactive shell
+        if(non_shell_mode):
             if(debug_mode):
-                print('There was an issue during command execution')
-            output, errors = Utils.Return_Error_Tuple()
-            if(debug_mode):
-                print(
-                    f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
-        else:
-            # If no errors occur during the command execution
+                print('SHELL mode is turned OFF')
+            # the command is called within a safe-mode try/except block
             try:
-                output, errors = executed_command_noShell.communicate(
-                    timeout=10)
-                print(f'Command <<{command}>> was executed')
-            except subprocess.TimeoutExpired:
-                executed_command_noShell.kill()
+                executed_command_noShell = subprocess.Popen(shell_cmd,
+                                                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            except FileNotFoundError:
+                if(debug_mode):
+                    print('There was an issue during command execution')
                 output, errors = Utils.Return_Error_Tuple()
                 if(debug_mode):
                     print(
                         f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
-            except OSError as os_issue:
-                if(debug_mode):
-                    print(f'There was an OS-specific issue.\n{os_issue}')
-                    print(errors)
-            except Exception as problem:
-                if(debug_mode):
-                    print(
-                        f'There was an issue while trying to execute the command:\n{problem}')
             else:
-                if(debug_mode):
-                    print(
-                        f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
-                if(Utils.Accept_Bytes(output)):
+                # If no errors occur during the command execution
+                try:
+                    output, errors = executed_command_noShell.communicate(
+                        timeout=10)
+                    print(f'Command <<{command}>> was executed')
+                except subprocess.TimeoutExpired:
+                    executed_command_noShell.kill()
+                    output, errors = Utils.Return_Error_Tuple()
                     if(debug_mode):
-                        print(f'Command output -> Saved into its output file...')
-                    Utils.Save_Output(command_name, output)
+                        print(
+                            f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
+                except OSError as os_issue:
+                    if(debug_mode):
+                        print(f'There was an OS-specific issue.\n{os_issue}')
+                        print(errors)
+                except Exception as problem:
+                    if(debug_mode):
+                        print(
+                            f'There was an issue while trying to execute the command:\n{problem}')
+                else:
+                    if(debug_mode):
+                        print(
+                            f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
+                    if(Utils.Accept_Bytes(output)):
+                        if(debug_mode):
+                            print(f'Command output -> Saved into its output file...')
+                        Utils.Save_Output(command_name, output)
