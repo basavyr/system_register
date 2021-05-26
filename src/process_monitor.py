@@ -29,7 +29,7 @@ class Utils:
         return '-1', 'Command could not be executed'
 
     @staticmethod
-    def Make_Shell_Command(command):
+    def Bash_Execution(command):
         shell_cmd = ['/bin/bash', '-c', str(command)]
         return shell_cmd
 
@@ -121,9 +121,9 @@ class Process:
         # the usual shell for UNIX-based systems is /usr/bin/bash
         non_shell_mode = True
 
-        shell_cmd = Utils.Make_Shell_Command(command)
+        bash_command = Utils.Bash_Execution(command)
         if(debug_mode):
-            print(f'shell command: {shell_cmd}')
+            print(f'shell command: {bash_command}')
 
         command_name = Utils.extract_name(command)
         if(debug_mode):
@@ -133,7 +133,7 @@ class Process:
         if(non_shell_mode):
             # the command is called within a safe-mode try/except block
             try:
-                executed_command_noShell = subprocess.Popen(shell_cmd,
+                executed_command_noShell = subprocess.Popen(bash_command,
                                                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             except FileNotFoundError as error:
                 if(debug_mode):
@@ -173,7 +173,7 @@ class Process:
                         print(f'There was an [OS] issue.\n{os_issue}\n')
                         print(f'Command runtime error: {errors}')
                 else:
-                    print(output, errors)
+                    # print(output, errors)
                     if(debug_mode):
                         print(
                             f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
