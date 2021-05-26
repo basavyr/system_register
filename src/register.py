@@ -44,6 +44,13 @@ class Register:
             return -1
         return 1
 
+    @staticmethod
+    def Clean_Process_Registers(process_file):
+        if os.path.exists(process_file):
+            os.remove(process_file)
+        else:
+            pass
+
 
 if __name__ == '__main__':
     print('Register class works')
