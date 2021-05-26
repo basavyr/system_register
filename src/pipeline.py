@@ -11,7 +11,7 @@ if __name__ == '__main__':
     process_list = 'PROCESSES'
     check_process_file = watch.Check_External_Process_List(process_list)
     if(check_process_file == -1):
-        process_list = watch.PROCESSES
+        process_list = watch.DEFAULT_PROCESSES
     else:
         process_list = watch.Get_Processes_From_Process_List(process_list)
 

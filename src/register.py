@@ -4,7 +4,7 @@ import os
 class Monitoring:
     """Define all the processes that will be monitored.
     """
-    PROCESSES = {
+    DEFAULT_PROCESSES = {
         "PY": 'python',
         "MD": 'systemd',
         "BASH": 'bash',
