@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: ahmadnassri/action-workflow-run-wait@v1
+    # - uses: ahmadnassri/action-workflow-run-wait@v1
     - name: Prepare App 🚀
       run: |
         sudo apt-get update
