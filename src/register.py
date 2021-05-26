@@ -4,6 +4,12 @@ import os
 class Monitoring:
     """Define all the processes that will be monitored.
     """
+
+    @staticmethod
+    def Create_Process_Filename(process_list):
+        process_list_file = f'{process_list}.list'
+        return process_list_file
+
     DEFAULT_PROCESSES = {
         "PY": 'python',
         "MD": 'systemd',
@@ -13,8 +19,7 @@ class Monitoring:
     @staticmethod
     def Check_External_Process_List(process_list):
         """Check if there is an external file with processes to be monitored"""
-        process_list_file = f'{process_list}.list'
-
+        process_list_file = Monitoring.Create_Process_Filename(process_list)
         # checks if theere is an external file with processes
         file_exists = os.path.isfile(process_list_file)
 
@@ -24,10 +29,10 @@ class Monitoring:
             # check if the content of the process list is empty or not
             try:
                 with open(process_list_file, 'r+') as reader:
-                    proc_list = reader.readlines()
+                    procs = reader.readlines()
             except Exception:
                 return 1
-            if(len(proc_list) == 0):
+            if(len(procs) == 0):
                 return -1
             return 1
 
@@ -38,6 +43,15 @@ class Monitoring:
         with open(process_list_file, 'r+') as reader:
             proc_list = reader.readlines()
         return proc_list
+
+    @staticmethod
+    def Purge_External_Process_List(process_list):
+        process_list_file = Monitoring.Create_Process_Filename(process_list)
+        file_exists = os.path.isfile(process_list_file)
+
+        if(file_exists):
+            print('Removing external process list file')
+            os.remove(process_list_file)
 
 
 class Utils:
