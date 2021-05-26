@@ -1,6 +1,16 @@
 import os
 
 
+class Monitoring:
+    """Define all the processes that will be monitored.
+    """
+    PROCESSES = {
+        "PY": 'python',
+        "MD": 'systemd',
+        "BASH": 'bash',
+    }
+
+
 class Utils:
     def Register_File(process):
         file_name = f'{process}_instances.list'
@@ -45,7 +55,8 @@ class Register:
         return 1
 
     @staticmethod
-    def Clean_Process_Registers(process_file):
+    def Clean_Process_Registers(process):
+        process_file = Utils.Register_File(process)
         if os.path.exists(process_file):
             os.remove(process_file)
         else:

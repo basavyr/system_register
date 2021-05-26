@@ -3,11 +3,12 @@ import time
 
 reg = register.Register
 tools = register.Utils
+watch = register.Monitoring
 
 
 if __name__ == '__main__':
 
-    process = 'bash'
+    process = watch.PROCESSES["PY"]
 
     x = reg.Create_Process_Register(process, 'test')
     y = reg.Read_Process_Register(process)
@@ -19,4 +20,5 @@ if __name__ == '__main__':
     else:
         print('It works')
         time.sleep(2)
-        reg.Clean_Process_Registers(tools.Register_File(process))
+        print('Performing registry cleanup...')
+        reg.Clean_Process_Registers(process)
