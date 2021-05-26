@@ -46,7 +46,7 @@ if __name__ == '__main__':
     process = ['python', 'snapd', 'pacman', 'clang']
 
     for proc in process:
-        ps_grep_process = procmon.Utils.search_running_process(proc)
+        ps_grep_process = procmon.Utils.make_ps_grep_process(proc)
         procmon.Process.Run_Shell_Command(ps_grep_process)
 
     if(PIPELINE):

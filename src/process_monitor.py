@@ -19,7 +19,7 @@ class Utils:
     def create_file(file_name): return f'{file_name}_command_output.dat'
 
     @staticmethod
-    def search_running_process(process): return f'ps aux | grep {process}'
+    def make_ps_grep_process(process): return f'ps aux | grep {process}'
 
     @staticmethod
     def Return_Error_Tuple():
@@ -49,7 +49,7 @@ class Utils:
                 writer.write(command_output)
 
     @staticmethod
-    def extract_name(full_command):
+    def extract_process_name(full_command):
         stripped = full_command.split(' ')
         return stripped[-1]
 
@@ -125,7 +125,7 @@ class Process:
         if(debug_mode):
             print(f'shell command: {bash_command}')
 
-        command_name = Utils.extract_name(command)
+        command_name = Utils.extract_process_name(command)
         if(debug_mode):
             print(f'command name: {command_name}')
 
