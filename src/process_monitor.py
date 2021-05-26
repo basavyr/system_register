@@ -107,16 +107,18 @@ class Process:
         return real_instances
 
     @staticmethod
-    def RunCommand(command):
+    def Run_Shell_Command(command):
         """
         Execute a shell-specific command within a Python method
 
         Uses the Popen function, from the subprocess module
 
         """
-        debug_mode = False
+        debug_mode = True
 
-        # cannot run ps command in non-shell mode
+        # run a command with the shell-mode turned off
+        # the shell=False mode requires the prefix of the command to be the system's shell executable
+        # the usual shell for UNIX-based systems is /usr/bin/bash
         non_shell_mode = True
 
         shell_cmd = Utils.Make_Shell_Command(command)
@@ -133,10 +135,11 @@ class Process:
             try:
                 executed_command_noShell = subprocess.Popen(shell_cmd,
                                                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            except FileNotFoundError:
+            except FileNotFoundError as error:
                 if(debug_mode):
                     print('There was an issue during command execution')
                 output, errors = Utils.Return_Error_Tuple()
+                print(f'Error: {error}')
                 if(debug_mode):
                     print(
                         f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
