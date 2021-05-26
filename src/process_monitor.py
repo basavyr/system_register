@@ -129,8 +129,6 @@ class Process:
 
         # execute the command outside the interactive shell
         if(non_shell_mode):
-            if(debug_mode):
-                print('SHELL mode is turned OFF')
             # the command is called within a safe-mode try/except block
             try:
                 executed_command_noShell = subprocess.Popen(shell_cmd,
@@ -143,6 +141,8 @@ class Process:
                     print(
                         f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
             except OSError:
+                if(debug_mode):
+                    print('There was an [OS] issue during command execution')
                 output, errors = Utils.Return_Error_Tuple()
                 if(debug_mode):
                     print(
@@ -161,17 +161,11 @@ class Process:
                             f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
                 except OSError as os_issue:
                     if(debug_mode):
-                        print(f'There was an OS-specific issue.\n{os_issue}')
+                        print(f'There was an [OS] issue.\n{os_issue}')
                         print(errors)
-                except Exception as problem:
-                    if(debug_mode):
-                        print(
-                            f'There was an issue while trying to execute the command:\n{problem}')
                 else:
                     if(debug_mode):
                         print(
                             f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
                     if(Utils.Accept_Bytes(output)):
-                        if(debug_mode):
-                            print(f'Command output -> Saved into its output file...')
                         Utils.Save_Output(command_name, output)

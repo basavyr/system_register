@@ -44,7 +44,7 @@ if __name__ == '__main__':
         process_list_file_name)
 
     # total execution time of the monitoring process
-    execution_time = 10
+    execution_time = 3
     Execute_Process_Monitor(execution_time, process_list)
 
     # wipe out the process file at the end of the program execution (optional command)
