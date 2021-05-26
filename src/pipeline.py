@@ -43,10 +43,11 @@ if __name__ == '__main__':
 
     PIPELINE = False
 
-    process = 'python'
+    process = ['python', 'snapd', 'pacman', 'clang']
 
-    ps_grep_process = procmon.Utils.search_running_process(process)
-    procmon.Process.Run_Shell_Command(ps_grep_process)
+    for proc in process:
+        ps_grep_process = procmon.Utils.search_running_process(proc)
+        procmon.Process.Run_Shell_Command(ps_grep_process)
 
     if(PIPELINE):
         process_list_file_name = 'PROCESSES'
