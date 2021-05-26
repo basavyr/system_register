@@ -14,6 +14,8 @@ watch = register.Monitoring
 
 def Execute_Process_Monitor(execution_time, process_list):
 
+    debug_mode = False
+
     runtime = True
 
     idx = 1
@@ -23,10 +25,11 @@ def Execute_Process_Monitor(execution_time, process_list):
 
         # TODO do operations
 
-        print(f'Iteration {idx}...\n')
+        print(f'\nIteration #{idx}...\n')
 
         for process in process_list:
-            print(f'will analyze instances for {process}')
+            if(debug_mode):
+                print(f'will analyze instances for {process}')
             procmon.Process.RunCommand(process)
 
         if(now()-start_time >= execution_time):
