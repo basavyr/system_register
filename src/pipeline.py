@@ -41,16 +41,24 @@ def Execute_Process_Monitor(execution_time, process_list):
 
 if __name__ == '__main__':
 
-    process_list_file_name = 'PROCESSES'
-    watch.Create_External_Process_List(process_list_file_name)
-    process_list = watch.Get_Processes_From_Process_List(
-        process_list_file_name)
+    PIPELINE = False
 
-    # total execution time of the monitoring process
-    execution_time = 3
-    # Execute_Process_Monitor(execution_time, process_list)
+    process = 'python'
 
-    # wipe out the process file at the end of the program execution (optional command)
-    purge_proc_list = False
-    if(purge_proc_list == True):
-        watch.Purge_External_Process_List(process_list_file_name)
+    ps_grep_process = procmon.Utils.search_running_process(process)
+    procmon.Process.Run_Shell_Command(ps_grep_process)
+
+    if(PIPELINE):
+        process_list_file_name = 'PROCESSES'
+        watch.Create_External_Process_List(process_list_file_name)
+        process_list = watch.Get_Processes_From_Process_List(
+            process_list_file_name)
+
+        # total execution time of the monitoring process
+        execution_time = 3
+        # Execute_Process_Monitor(execution_time, process_list)
+
+        # wipe out the process file at the end of the program execution (optional command)
+        purge_proc_list = False
+        if(purge_proc_list == True):
+            watch.Purge_External_Process_List(process_list_file_name)
