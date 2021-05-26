@@ -1,0 +1,29 @@
+name: Dockerize-Register
+
+on:
+  workflow_run:
+    workflows: [ "Test-Register" ]
+    types:
+      - completed
+
+jobs:
+  build-app:
+    
+    name: Build App
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ahmadnassri/action-workflow-run-wait@v1
+    - name: Build Image ➡️ Create Container ➡️ Run Container
+      run: |
+        docker build . -t register-image
+        docker container create --name register-container register-image
+        docker start -i register-container
+    
+    # - uses: actions/upload-artifact@v2
+    #   with:
+    #     name: ${{env.appName}}.zip
+    #     path: ${{env.appName}}.zip
+    #     if-no-files-found: warn
