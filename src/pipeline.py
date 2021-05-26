@@ -1,5 +1,8 @@
 import register
 
 
+reg = register.Register
+
+
 if __name__ == '__main__':
-    print('Works')
+    reg.Create_Register_Directory('dir')
