@@ -6,8 +6,28 @@ tools = register.Utils
 watch = register.Monitoring
 
 
+def now():
+    return time.time()
+
+
 def Execute_Process_Monitor(execution_time, process_list):
-    return 1, 1
+
+    runtime = True
+
+    idx = 1
+
+    start_time = now()
+    while(runtime):
+
+        # TODO do operations
+
+        print(f'Iteration {idx}...\n')
+
+        if(now()-start_time >= execution_time):
+            runtime = False
+            break
+        idx += 1
+        time.sleep(1)
 
 
 if __name__ == '__main__':
