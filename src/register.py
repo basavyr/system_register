@@ -42,6 +42,7 @@ class Monitoring:
         process_list_file = f'{process_list}.list'
         with open(process_list_file, 'r+') as reader:
             proc_list = reader.readlines()
+        proc_list = [x.strip() for x in proc_list]
         return proc_list
 
     @staticmethod
@@ -58,6 +59,17 @@ class Monitoring:
                 print(
                     f'Error while trying to remove the process file\n{error}')
                 pass
+
+    @staticmethod
+    def Create_External_Process_List(process_list):
+        process_list_file = Monitoring.Create_Process_Filename(process_list)
+        file_exists = os.path.isfile(process_list_file)
+
+        if(file_exists == False):
+            with open(process_list_file, 'w+') as proc_writer:
+                for proc in Monitoring.DEFAULT_PROCESSES:
+                    proc_writer.write(
+                        f'{Monitoring.DEFAULT_PROCESSES[proc]}\n')
 
 
 class Utils:
