@@ -11,17 +11,32 @@ class Monitoring:
     }
 
     @staticmethod
-    def Check_External_List(process_list):
+    def Check_External_Process_List(process_list):
         """Check if there is an external file with processes to be monitored"""
-        process_list_file=f'{process_list}.list'
-        
-        try:
-            os.path.isfile(process_list_file)
-        except OSError:
+        process_list_file = f'{process_list}.list'
+
+        # checks if theere is an external file with processes
+        file_exists = os.path.isfile(process_list_file)
+
+        if(file_exists == False):
             return -1
         else:
-            with open(process_list_file,'r+') as reader:
-                proc_list=reader.readlines()
+            # check if the content of the process list is empty or not
+            try:
+                with open(process_list_file, 'r+') as reader:
+                    proc_list = reader.readlines
+            except Exception:
+                return 1
+            if(len(proc_list) == 0):
+                return -1
+            return 1
+
+    @staticmethod
+    def Get_Processes_From_Process_List(process_list):
+        """read the process list (if it exists) and saves them to a list"""
+        process_list_file = f'{process_list}.list'
+        with open(process_list_file, 'r+') as reader:
+            proc_list = reader.readlines
         return proc_list
 
 

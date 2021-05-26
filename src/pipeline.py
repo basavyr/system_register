@@ -19,6 +19,8 @@ if __name__ == '__main__':
         print('Errors ocurred')
     else:
         print('It works')
-        time.sleep(2)
         print('Performing registry cleanup...')
         reg.Clean_Process_Registers(process)
+
+    check_process_file = watch.Check_External_Process_List('PROCESSES')
+    print(check_process_file)
