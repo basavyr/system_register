@@ -14,6 +14,7 @@ class Monitoring:
         "PY": 'python',
         "MD": 'systemd',
         "BASH": 'bash',
+        "SH": 'shell'
     }
 
     @staticmethod

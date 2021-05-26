@@ -114,10 +114,10 @@ class Process:
         Uses the Popen function, from the subprocess module
 
         """
-        debug_mode = True
+        debug_mode = False
 
         # cannot run ps command in non-shell mode
-        non_shell_mode = False
+        non_shell_mode = True
 
         shell_cmd = Utils.Make_Shell_Command(command)
         if(debug_mode):
@@ -160,12 +160,15 @@ class Process:
                         print(
                             f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
                 except OSError as os_issue:
+                    executed_command_noShell.kill()
+                    output, errors = Utils.Return_Error_Tuple()
                     if(debug_mode):
                         print(f'There was an [OS] issue.\n{os_issue}')
                         print(errors)
                 else:
-                    if(debug_mode):
-                        print(
-                            f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
-                    if(Utils.Accept_Bytes(output)):
-                        Utils.Save_Output(command_name, output)
+                    print(output, errors)
+                    # if(debug_mode):
+                    #     print(
+                    #         f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
+                    # if(Utils.Accept_Bytes(output)):
+                    #     Utils.Save_Output(command_name, output)

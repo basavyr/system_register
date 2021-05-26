@@ -14,7 +14,7 @@ watch = register.Monitoring
 
 def Execute_Process_Monitor(execution_time, process_list):
 
-    debug_mode = False
+    debug_mode = True
 
     runtime = True
 
