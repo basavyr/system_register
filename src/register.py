@@ -47,11 +47,17 @@ class Monitoring:
     @staticmethod
     def Purge_External_Process_List(process_list):
         process_list_file = Monitoring.Create_Process_Filename(process_list)
+        # print(process_list_file)
         file_exists = os.path.isfile(process_list_file)
-
+        # print(file_exists)
         if(file_exists):
             print('Removing external process list file')
-            os.remove(process_list_file)
+            try:
+                os.remove(process_list_file)
+            except OSError as error:
+                print(
+                    f'Error while trying to remove the process file\n{error}')
+                pass
 
 
 class Utils:

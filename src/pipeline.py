@@ -8,14 +8,16 @@ watch = register.Monitoring
 
 if __name__ == '__main__':
 
-    process_list = 'PROCESSES'
-    check_process_file = watch.Check_External_Process_List(process_list)
+    process_list_file_name = 'PROCESSES'
+    check_process_file = watch.Check_External_Process_List(
+        process_list_file_name)
     if(check_process_file == -1):
         process_list = watch.DEFAULT_PROCESSES
     else:
-        process_list = watch.Get_Processes_From_Process_List(process_list)
+        process_list = watch.Get_Processes_From_Process_List(
+            process_list_file_name)
 
-    print(process_list)
+    watch.Purge_External_Process_List(process_list_file_name)
 #
     # x = reg.Create_Process_Register(process, 'test')
     # y = reg.Read_Process_Register(process)
