@@ -10,8 +10,23 @@ class Monitoring:
         "BASH": 'bash',
     }
 
+    @staticmethod
+    def Check_External_List(process_list):
+        """Check if there is an external file with processes to be monitored"""
+        process_list_file=f'{process_list}.list'
+        
+        try:
+            os.path.isfile(process_list_file)
+        except OSError:
+            return -1
+        else:
+            with open(process_list_file,'r+') as reader:
+                proc_list=reader.readlines()
+        return proc_list
+
 
 class Utils:
+    @staticmethod
     def Register_File(process):
         file_name = f'{process}_instances.list'
         return file_name
@@ -61,7 +76,3 @@ class Register:
             os.remove(process_file)
         else:
             pass
-
-
-if __name__ == '__main__':
-    print('Register class works')
