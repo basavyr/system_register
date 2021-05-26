@@ -1,5 +1,6 @@
 import register
 import time
+import process_monitor as procmon
 
 
 def now():
@@ -26,6 +27,7 @@ def Execute_Process_Monitor(execution_time, process_list):
 
         for process in process_list:
             print(f'will analyze instances for {process}')
+            procmon.RunCommand(process)
 
         if(now()-start_time >= execution_time):
             runtime = False

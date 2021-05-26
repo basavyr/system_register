@@ -10,10 +10,10 @@ class Utils:
     utf8 = 'UTF-8'
 
     @staticmethod
-    def encode(obj): return bytes(obj, utf8)
+    def encode(obj): return bytes(obj, Utils.utf8)
 
     @staticmethod
-    def decode(text): return text.decode(utf8)
+    def decode(text): return text.decode(Utils.utf8)
 
     @staticmethod
     def create_file(file_name): return f'{file_name}_command_output.dat'
@@ -38,7 +38,7 @@ class Utils:
         filename = Utils.create_file(command_name)
 
         # if the output object is in bytes, convert it to string
-        if(Accept_Bytes(command_output) == -1):
+        if(Utils.Accept_Bytes(command_output) == -1):
             command_output = Utils.decode(command_output)
 
         with open(filename, 'w+') as writer:
@@ -52,6 +52,14 @@ class Utils:
     def extract_name(full_command):
         stripped = full_command.split(' ')
         return stripped[-1]
+
+    @staticmethod
+    def Accept_Bytes(input):
+        try:
+            assert type(input) == bytes, 'The input object is not bytes'
+        except AssertionError:
+            return 1
+        return -1
 
 
 class Process:
@@ -108,8 +116,6 @@ def RunCommand(command):
     """
     debug_mode = False
 
-    shell_mode = False
-
     # cannot run ps command in non-shell mode
     non_shell_mode = True
 
@@ -120,41 +126,6 @@ def RunCommand(command):
     command_name = Utils.extract_name(command)
     if(debug_mode):
         print(f'command name: {command_name}')
-
-    # execute the command with shell mode turned on: that means the command is executed within the interactive shell
-    if(shell_mode):
-        if(debug_mode):
-            print('SHELL mode is turned ON')
-        # execute the shell command in safe-mode using the try/except block
-        try:
-            executed_command = subprocess.Popen(command, shell=True,
-                                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        except FileNotFoundError:
-            if(debug_mode):
-                print('There was an issue during command execution')
-            output, errors = Utils.Return_Error_Tuple()
-            print(
-                f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
-        else:
-            if(debug_mode):
-                print(f'Command <<{command}>> can be executed')
-            try:
-                output, errors = executed_command.communicate(timeout=10)
-            except subprocess.TimeoutExpired:
-                executed_command.kill()
-                output, errors = Utils.Return_Error_Tuple()
-                print(
-                    f'Command output/errors:\nSTDOUT: {output}\nSTDERR: {errors}')
-            except OSError as os_issue:
-                print(f'There was an OS-specific issue.\n{os_issue}')
-            except Exception as problem:
-                print(
-                    f'There was an issue while trying to execute the command:\n{problem}')
-            else:
-                print(f'Return code: {executed_command.returncode}')
-                if(Accept_Bytes(output)):
-                    print(f'Command output:\n{output}')
-                    Utils.Save_Output(command_name, output)
 
     # execute the command outside the interactive shell
     if(non_shell_mode):
@@ -195,15 +166,7 @@ def RunCommand(command):
                 if(debug_mode):
                     print(
                         f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
-                if(Accept_Bytes(output)):
+                if(Utils.Accept_Bytes(output)):
                     if(debug_mode):
                         print(f'Command output -> Saved into its output file...')
                     Utils.Save_Output(command_name, output)
-
-
-def Accept_Bytes(input):
-    try:
-        assert type(input) == bytes, 'The input object is not bytes'
-    except AssertionError:
-        return 1
-    return -1
