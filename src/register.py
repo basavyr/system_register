@@ -82,7 +82,8 @@ class Utils:
 
 class Register:
 
-    register_directory = 'process_register'
+    register_directory = 'REGISTER'
+    process_list_file_name = 'PROCESSES'
 
     @staticmethod
     def Create_Register_Directory(dir_name):
