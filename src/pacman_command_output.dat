@@ -1,0 +1,2 @@
+robertp+    9623  0.0  0.0   7264  2784 pts/2    S+   07:45   0:00 /bin/bash -c ps aux | grep pacman
+robertp+    9625  0.0  0.0   6408  2408 pts/2    S+   07:45   0:00 grep pacman

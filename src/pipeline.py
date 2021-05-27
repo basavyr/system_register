@@ -55,6 +55,8 @@ if __name__ == '__main__':
         process_list = watch.Get_Processes_From_Process_List(
             process_list_file_name)
 
+        # create a directory where every active instances are saved
+        register.Register.Create_Register_Directory('process_register')
         # total execution time of the monitoring process
         execution_time = 3
         # Execute_Process_Monitor(execution_time, process_list)

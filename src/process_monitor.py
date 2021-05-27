@@ -2,6 +2,7 @@
 import os
 import subprocess
 import time
+import register
 
 
 class Utils:
@@ -177,5 +178,5 @@ class Process:
                     if(debug_mode):
                         print(
                             f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
-                    # if(Utils.Accept_Bytes(output)):
-                    #     Utils.Save_Output(command_name, output)
+                    if(Utils.Accept_Bytes(output)):
+                        Utils.Save_Output(command_name, output)
