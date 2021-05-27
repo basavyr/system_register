@@ -105,19 +105,18 @@ class Process:
     @staticmethod
     def Get_Active_Instances(process):
         process_file = Utils.get_process_file(process)
-        print(process_file)
-        # try:
-        #     with open('dada', 'r+') as reader:  # todo implement proper file path
-        #         instances = reader.readlines()
-        # except FileNotFoundError:
-        #     instances = []
-        # n_instances = len(instances)
-        # # the real number of active instances is N-2
-        # # one instance is from the grep itself, the other is for the python script
-        # real_instances = n_instances - 2
-        # if(real_instances <= 0 or instances == []):
-        #     return -1
-        # return real_instances
+        try:
+            with open(process_file, 'r+') as reader:
+                instances = reader.readlines()
+        except FileNotFoundError:
+            instances = []
+        n_instances = len(instances)
+        # the real number of active instances is N-2
+        # one instance is from the grep itself, the other is for the python script
+        real_instances = n_instances - 2
+        if(real_instances <= 0 or instances == []):
+            return -1
+        return real_instances
 
     @staticmethod
     def Run_Shell_Command(command):
