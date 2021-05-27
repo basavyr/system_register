@@ -151,3 +151,8 @@ class Register:
             os.rmdir(dir_name)
         except OSError:
             pass
+
+    @staticmethod
+    def Clean_All(dir_name):
+        Register.Purge_Register_Files(dir_name)
+        Register.Purge_Register_Directory(dir_name)

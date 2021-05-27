@@ -32,7 +32,7 @@ def Execute_Process_Monitor(execution_time, process_list):
                 print(f'will analyze instances for {process}')
             procmon.Process.RunCommand(process)
 
-        if(now()-start_time >= execution_time):
+        if(now() - start_time >= execution_time):
             runtime = False
             break
         idx += 1
@@ -50,9 +50,7 @@ if __name__ == '__main__':
         procmon.Process.Run_Shell_Command(ps_grep_process)
 
     time.sleep(4)
-    register.Register.Purge_Register_Files('process_register')
-    register.Register.Purge_Register_Directory('process_register')
-
+    register.Register.Clean_All(register.Register.register_directory)
 
     if(PIPELINE):
         process_list_file_name = 'PROCESSES'
@@ -61,7 +59,8 @@ if __name__ == '__main__':
             process_list_file_name)
 
         # create a directory where every active instances are saved
-        register.Register.Create_Register_Directory('process_register')
+        register.Register.Create_Register_Directory(
+            register.Register.register_directory)
         # total execution time of the monitoring process
         execution_time = 3
         # Execute_Process_Monitor(execution_time, process_list)
