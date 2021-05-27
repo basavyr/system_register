@@ -42,7 +42,12 @@ class Utils:
         if(Utils.Is_Bytes(command_output) == 1):
             command_output = Utils.decode(command_output)
 
-        with open(filename, 'w+') as writer:
+        register.Register.Create_Register_Directory(
+            register.Register.register_directory)
+
+        file_path = f'{register.Register.register_directory}/{filename}'
+
+        with open(file_path, 'w+') as writer:
             try:
                 writer.write(command_output)
             except TypeError:

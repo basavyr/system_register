@@ -1,2 +1,0 @@
-robertp+   14219  0.0  0.0   7264  3008 pts/2    S+   08:03   0:00 /bin/bash -c ps aux | grep clang
-robertp+   14221  0.0  0.0   6408  2304 pts/2    S+   08:03   0:00 grep clang

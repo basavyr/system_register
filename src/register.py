@@ -82,6 +82,8 @@ class Utils:
 
 class Register:
 
+    register_directory = 'process_register'
+
     @staticmethod
     def Create_Register_Directory(dir_name):
         try:
@@ -131,4 +133,5 @@ class Register:
             dir_path = os.path.realpath(dir_name)
             os.rmdir(dir_path)
         except OSError as err:
+            print(err)
             pass
