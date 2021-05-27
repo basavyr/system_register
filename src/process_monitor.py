@@ -20,6 +20,10 @@ class Utils:
     def create_file(file_name): return f'{file_name}_command_output.dat'
 
     @staticmethod
+    def get_process_file(
+        process_name): return f'{process_name}_command_output.dat'
+
+    @staticmethod
     def make_ps_grep_process(process): return f'ps aux | grep {process}'
 
     @staticmethod
@@ -100,20 +104,20 @@ class Process:
 
     @staticmethod
     def Get_Active_Instances(process):
-        process_file = Utils.create_file(Utils.extract_process_name(process))
+        process_file = Utils.get_process_file(process)
         print(process_file)
-        try:
-            with open('dada', 'r+') as reader:  # todo implement proper file path
-                instances = reader.readlines()
-        except FileNotFoundError:
-            instances = []
-        n_instances = len(instances)
-        # the real number of active instances is N-2
-        # one instance is from the grep itself, the other is for the python script
-        real_instances = n_instances - 2
-        if(real_instances <= 0 or instances == []):
-            return -1
-        return real_instances
+        # try:
+        #     with open('dada', 'r+') as reader:  # todo implement proper file path
+        #         instances = reader.readlines()
+        # except FileNotFoundError:
+        #     instances = []
+        # n_instances = len(instances)
+        # # the real number of active instances is N-2
+        # # one instance is from the grep itself, the other is for the python script
+        # real_instances = n_instances - 2
+        # if(real_instances <= 0 or instances == []):
+        #     return -1
+        # return real_instances
 
     @staticmethod
     def Run_Shell_Command(command):

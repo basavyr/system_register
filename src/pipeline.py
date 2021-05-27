@@ -30,6 +30,7 @@ def Execute_Process_Monitor(execution_time, process_list):
                 print(f'will analyze instances for {process}')
             grepped_ps_command = procmon.Utils.make_ps_grep_process(process)
             procmon.Process.Run_Shell_Command(grepped_ps_command)
+            procmon.Process.Get_Active_Instances(process)
 
         # stop the execution pipeline after the runtime reachers execution time
         if(now() - start_time >= execution_time):
@@ -52,9 +53,10 @@ if __name__ == '__main__':
         register.Register.process_list_file_name)
     # PROCESS_LIST = watch.Get_Processes_From_Process_List(
     #     register.Register.process_list_file_name)
-    PROCESS_LIST = ['python']
+    # ! use fake example process list with only one element to monitor
+    PROCESS_LIST = ['python', 'systemd']
 
-    CLEANUP = True
+    CLEANUP = False
 
     EXECUTION_TIME = 3
 
