@@ -50,13 +50,18 @@ if __name__ == '__main__':
     # Create the process list and save it to a file
     watch.Create_External_Process_List(
         register.Register.process_list_file_name)
-    PROCESS_LIST = watch.Get_Processes_From_Process_List(
-        register.Register.process_list_file_name)
+    # PROCESS_LIST = watch.Get_Processes_From_Process_List(
+    #     register.Register.process_list_file_name)
+    PROCESS_LIST = ['python']
 
-    EXECUTION_TIME = 10
+    CLEANUP = True
+
+    EXECUTION_TIME = 3
 
     if(PIPELINE == True):
         PIPELINE_EXECUTION = Execute_Process_Monitor(
             EXECUTION_TIME, PROCESS_LIST)
-        if(PIPELINE_EXECUTION):
+        if(PIPELINE_EXECUTION and CLEANUP == True):
+            print('Doing cleanup...')
             reg.Clean_All(reg.register_directory)
+            watch.Purge_External_Process_List(reg.process_list_file_name)

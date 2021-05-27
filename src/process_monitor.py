@@ -42,11 +42,11 @@ class Utils:
         if(Utils.Is_Bytes(command_output) == 1):
             command_output = Utils.decode(command_output)
 
-        #create a directory where every process will have the running instances saved as files
+        # create a directory where every process will have the running instances saved as files
         register.Register.Create_Register_Directory(
             register.Register.register_directory)
 
-        #adjust the path of the output file for each process according to the directory used for storage
+        # adjust the path of the output file for each process according to the directory used for storage
         file_path = f'{register.Register.register_directory}/{filename}'
 
         with open(file_path, 'w+') as writer:
@@ -101,16 +101,17 @@ class Process:
     @staticmethod
     def Get_Active_Instances(process):
         process_file = Utils.create_file(Utils.extract_process_name(process))
+        print(process_file)
         try:
-            with open('dada', 'r+') as reader:
+            with open('dada', 'r+') as reader:  # todo implement proper file path
                 instances = reader.readlines()
         except FileNotFoundError:
-            instances = ' '
+            instances = []
         n_instances = len(instances)
         # the real number of active instances is N-2
         # one instance is from the grep itself, the other is for the python script
-        real_instances = n_instances-2
-        if(real_instances == 0 or instances == ' '):
+        real_instances = n_instances - 2
+        if(real_instances <= 0 or instances == []):
             return -1
         return real_instances
 
