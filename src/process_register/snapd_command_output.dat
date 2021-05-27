@@ -1,0 +1,2 @@
+robertpoenaru    45951   0.0  0.0  4399480    828 s001  S+   12:31PM   0:00.00 grep snapd
+robertpoenaru    45949   0.0  0.0  4400056   1128 s001  S+   12:31PM   0:00.00 /bin/bash -c ps aux | grep snapd

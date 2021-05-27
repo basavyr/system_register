@@ -42,9 +42,11 @@ class Utils:
         if(Utils.Is_Bytes(command_output) == 1):
             command_output = Utils.decode(command_output)
 
+        #create a directory where every process will have the running instances saved as files
         register.Register.Create_Register_Directory(
             register.Register.register_directory)
 
+        #adjust the path of the output file for each process according to the directory used for storage
         file_path = f'{register.Register.register_directory}/{filename}'
 
         with open(file_path, 'w+') as writer:
