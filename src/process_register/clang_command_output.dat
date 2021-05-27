@@ -1,2 +1,0 @@
-robertpoenaru    41490   0.7  0.0  4400056   1128 s001  S+   12:07PM   0:00.00 /bin/bash -c ps aux | grep clang
-robertpoenaru    41492   0.0  0.0  4399480    828 s001  S+   12:07PM   0:00.00 grep clang
