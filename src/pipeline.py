@@ -49,7 +49,10 @@ if __name__ == '__main__':
         ps_grep_process = procmon.Utils.make_ps_grep_process(proc)
         procmon.Process.Run_Shell_Command(ps_grep_process)
 
+    time.sleep(4)
     register.Register.Purge_Register_Files('process_register')
+    register.Register.Purge_Register_Directory('process_register')
+
 
     if(PIPELINE):
         process_list_file_name = 'PROCESSES'

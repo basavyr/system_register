@@ -144,3 +144,10 @@ class Register:
                         os.remove(os.path.join(root, file))
                     except OSError:
                         pass
+
+    @staticmethod
+    def Purge_Register_Directory(dir_name):
+        try:
+            os.rmdir(dir_name)
+        except OSError:
+            pass
