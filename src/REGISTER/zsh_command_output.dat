@@ -1,0 +1,5 @@
+robertpoenaru    30543   0.0  0.0  4643648   2736 s001  Ss    9:24AM   0:00.46 /bin/zsh -l
+robertpoenaru     1752   0.0  0.0  4636480      8 s000  Ss+  Tue05PM   0:00.23 /bin/zsh -l
+robertpoenaru    68240   0.0  0.0  4408696    852 s001  S+   10:06PM   0:00.00 grep zsh
+robertpoenaru    68238   0.0  0.0  4400056   1128 s001  S+   10:06PM   0:00.00 /bin/bash -c ps aux | grep zsh
+robertpoenaru    66941   0.0  0.0  4468544   2384 s002  S+   10:04PM   0:00.09 -zsh

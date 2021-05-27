@@ -1,0 +1,2 @@
+robertpoenaru    68234   0.0  0.0  4408696    852 s001  S+   10:06PM   0:00.00 grep bash
+robertpoenaru    68232   0.0  0.0  4400056   1128 s001  S+   10:06PM   0:00.00 /bin/bash -c ps aux | grep bash
