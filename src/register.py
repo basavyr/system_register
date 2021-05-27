@@ -128,21 +128,19 @@ class Register:
             pass
 
     @staticmethod
-    def Purge_Register_Directory(dir_name):
-        # print(os.path.abspath(dir_name))
+    def Purge_Register_Files(dir_name):
         try:
-            dir_size=os.listdir(dir_name)
+            dir_size = os.listdir(dir_name)
         except OSError:
             pass
-        if(len(dir_size)>0):
-            purge_mode=True
+        if(len(dir_size) > 0):
+            purge_mode = True
         else:
-            purge_mode=False
-        print(len(dir_size))
-        # for root, dirs, files in os.walk(dir_name):
-        #     print(dirs)
-        #     for file in files:
-        #         try:
-        #             os.remove(os.path.join(root, file))
-        #         except OSError:
-        #             pass
+            purge_mode = False
+        if(purge_mode):
+            for root, _, files in os.walk(dir_name):
+                for file in files:
+                    try:
+                        os.remove(os.path.join(root, file))
+                    except OSError:
+                        pass
