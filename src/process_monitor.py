@@ -39,7 +39,7 @@ class Utils:
         filename = Utils.create_file(command_name)
 
         # if the output object is in bytes, convert it to string
-        if(Utils.Accept_Bytes(command_output) == -1):
+        if(Utils.Is_Bytes(command_output) == 1):
             command_output = Utils.decode(command_output)
 
         with open(filename, 'w+') as writer:
@@ -55,12 +55,12 @@ class Utils:
         return stripped[-1]
 
     @staticmethod
-    def Accept_Bytes(input):
+    def Is_Bytes(input):
         try:
             assert type(input) == bytes, 'The input object is not bytes'
         except AssertionError:
-            return 1
-        return -1
+            return -1
+        return 1
 
 
 class Process:
@@ -174,9 +174,8 @@ class Process:
                         print(f'There was an [OS] issue.\n{os_issue}\n')
                         print(f'Command runtime error: {errors}')
                 else:
-                    # print(output, errors)
                     if(debug_mode):
                         print(
                             f'Return code: {executed_command_noShell.returncode} ({Process.Get_Command_Status(executed_command_noShell)})')
-                    if(Utils.Accept_Bytes(output)):
+                    if(Utils.Is_Bytes(output)):
                         Utils.Save_Output(command_name, output)
