@@ -62,7 +62,7 @@ if __name__ == '__main__':
 
     CLEANUP = False
 
-    EXECUTION_TIME = 3
+    EXECUTION_TIME = 10
 
     if(PIPELINE == True):
         PIPELINE_EXECUTION = Execute_Process_Monitor(

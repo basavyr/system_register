@@ -105,8 +105,10 @@ class Process:
     @staticmethod
     def Get_Active_Instances(process):
         process_file = Utils.get_process_file(process)
+        # the path of the process file must be changed to the directory in which the lists are stored
+        register_process_file = f'{register.Register.register_directory}/{process_file}'
         try:
-            with open(process_file, 'r+') as reader:
+            with open(register_process_file, 'r+') as reader:
                 instances = reader.readlines()
         except FileNotFoundError:
             instances = []
