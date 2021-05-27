@@ -1,2 +1,2 @@
-robertp+   16180  0.0  0.0   7264  2792 pts/2    S+   08:12   0:00 /bin/bash -c ps aux | grep pacman
-robertp+   16182  0.0  0.0   6408  2292 pts/2    S+   08:12   0:00 grep pacman
+robertpoenaru    41487   0.9  0.0  4401080   1140 s001  S+   12:07PM   0:00.00 /bin/bash -c ps aux | grep pacman
+robertpoenaru    41489   0.0  0.0  4399480    828 s001  S+   12:07PM   0:00.00 grep pacman

@@ -129,9 +129,8 @@ class Register:
 
     @staticmethod
     def Purge_Register_Directory(dir_name):
-        try:
-            dir_path = os.path.realpath(dir_name)
-            os.rmdir(dir_path)
-        except OSError as err:
-            print(err)
-            pass
+        for root, dirs, files in os.walk(dir_name):
+            print(root)
+            print(dirs)
+            for file in files:
+                print(file)

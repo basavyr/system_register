@@ -120,7 +120,7 @@ class Process:
         Uses the Popen function, from the subprocess module
 
         """
-        debug_mode = True
+        debug_mode = False
 
         # run a command with the shell-mode turned off
         # the shell=False mode requires the prefix of the command to be the system's shell executable
@@ -164,7 +164,8 @@ class Process:
                 try:
                     output, errors = executed_command_noShell.communicate(
                         timeout=10)
-                    print(f'Command <<{command}>> was executed')
+                    if(debug_mode):
+                        print(f'Command <<{command}>> was executed')
                 except subprocess.TimeoutExpired:
                     executed_command_noShell.kill()
                     output, errors = Utils.Return_Error_Tuple()
