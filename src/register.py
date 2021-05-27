@@ -154,5 +154,8 @@ class Register:
 
     @staticmethod
     def Clean_All(dir_name):
-        Register.Purge_Register_Files(dir_name)
-        Register.Purge_Register_Directory(dir_name)
+        try:
+            Register.Purge_Register_Files(dir_name)
+            Register.Purge_Register_Directory(dir_name)
+        except OSError:
+            pass

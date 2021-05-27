@@ -100,7 +100,7 @@ class Process:
 
     @staticmethod
     def Get_Active_Instances(process):
-        process_file = Utils.create_file(Utils.extract_name(process))
+        process_file = Utils.create_file(Utils.extract_process_name(process))
         try:
             with open('dada', 'r+') as reader:
                 instances = reader.readlines()

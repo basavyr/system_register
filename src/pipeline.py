@@ -30,7 +30,7 @@ def Execute_Process_Monitor(execution_time, process_list):
         for process in process_list:
             if(debug_mode):
                 print(f'will analyze instances for {process}')
-            procmon.Process.RunCommand(process)
+            procmon.Process.Run_Shell_Command(process)
 
         if(now() - start_time >= execution_time):
             runtime = False
@@ -49,7 +49,7 @@ if __name__ == '__main__':
         ps_grep_process = procmon.Utils.make_ps_grep_process(proc)
         procmon.Process.Run_Shell_Command(ps_grep_process)
 
-    time.sleep(4)
+    time.sleep(1)
     register.Register.Clean_All(register.Register.register_directory)
 
     if(PIPELINE):
