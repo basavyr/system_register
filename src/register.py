@@ -124,3 +124,11 @@ class Register:
             os.remove(process_file)
         else:
             pass
+
+    @staticmethod
+    def Purge_Register_Directory(dir_name):
+        try:
+            dir_path = os.path.realpath(dir_name)
+            os.rmdir(dir_path)
+        except OSError as err:
+            pass
