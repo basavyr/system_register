@@ -1,8 +1,2 @@
-robertp+    3628  0.0  0.0   7480  1336 ?        S    May27   0:00 /bin/bash /app/bin/discord
-robertp+    3999  0.0  0.0  18036  1412 ?        S    May27   0:00 /bin/bash /snap/mailspring/505/usr/share/mailspring/resources/app.asar.unpacked/mailsync --mode sync --info robert.poenaru@gmail.com
-robertp+    4004  0.0  0.0  18036  1368 ?        S    May27   0:00 /bin/bash /snap/mailspring/505/usr/share/mailspring/resources/app.asar.unpacked/mailsync --mode sync --info robert.poenaru@drd.unibuc.ro
-robertp+    4009  0.0  0.0  18036  1508 ?        S    May27   0:00 /bin/bash /snap/mailspring/505/usr/share/mailspring/resources/app.asar.unpacked/mailsync --mode sync --info robert.poenaru@outlook.com
-robertp+    4013  0.0  0.0  18036  1388 ?        S    May27   0:00 /bin/bash /snap/mailspring/505/usr/share/mailspring/resources/app.asar.unpacked/mailsync --mode sync --info robert.poenaru@icloud.com
-robertp+    4019  0.0  0.0  18036  1368 ?        S    May27   0:00 /bin/bash /snap/mailspring/505/usr/share/mailspring/resources/app.asar.unpacked/mailsync --mode sync --info robert.poenaru@nipne.ro
-robertp+   41062  0.0  0.0   7264  2848 pts/2    S+   09:05   0:00 /bin/bash -c ps aux | grep bash
-robertp+   41064  0.0  0.0   6408  2268 pts/2    S+   09:05   0:00 grep bash
+robertpoenaru    74128   0.0  0.0  4399480    828 s001  S+   10:10AM   0:00.00 grep bash
+robertpoenaru    74126   0.0  0.0  4400056   1128 s001  S+   10:10AM   0:00.00 /bin/bash -c ps aux | grep bash

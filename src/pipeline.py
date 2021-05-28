@@ -29,6 +29,7 @@ def Execute_Process_Monitor(execution_time, process_list):
         print(f'\nIteration #{idx}...\n')
 
         for process in process_list:
+            print(f'<<{process}>>')
             if(debug_mode):
                 print(f'will analyze active instances for <<{process}>>')
             grepped_ps_command = procmon.Utils.make_ps_grep_process(process)
@@ -46,15 +47,17 @@ def Execute_Process_Monitor(execution_time, process_list):
                         print(
                             f'<<{process}>> -> No active instances found')
                 else:
-                    if(debug_mode):
-                        print(
-                            f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
+                    print(
+                        f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
+                    # if(debug_mode):
+                        # print(
+                        #     f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
                     if(debug_mode):
                         print(
                             f'<<{process}>> -> {process_active_instances_number} active instances found')
             current_instance_number = process_active_instances_number
 
-            if(current_instance_number >= 0 and previous_instance_number >= 0):
+            if(current_instance_number >= 0 and previous_instance_number >= 0 and idx > 1):
                 print(
                     f'current: {current_instance_number} , previous: {previous_instance_number}')
 

@@ -1,9 +1,2 @@
-root         273  0.0  0.3  39296 25348 ?        Ss   May27   0:03 /usr/lib/systemd/systemd-journald
-root         275  0.0  0.0  30984  7092 ?        Ss   May27   0:01 /usr/lib/systemd/systemd-udevd
-systemd+     687  0.0  0.0  89916  5616 ?        Ssl  May27   0:00 /usr/lib/systemd/systemd-timesyncd
-dbus         694  0.0  0.0  15068  7336 ?        Ss   May27   1:27 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-root         699  0.0  0.0 244252  6604 ?        Ss   May27   0:01 /usr/lib/systemd/systemd-logind
-robertp+    1210  0.0  0.0  16996  7628 ?        Ss   May27   0:00 /usr/lib/systemd/systemd --user
-robertp+    1231  0.0  0.0  14248  6852 ?        Ss   May27   0:16 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-robertp+   41059  0.0  0.0   7264  2812 pts/2    S+   09:05   0:00 /bin/bash -c ps aux | grep systemd
-robertp+   41061  0.0  0.0   6408  2232 pts/2    S+   09:05   0:00 grep systemd
+robertpoenaru    74125   0.0  0.0  4399480    828 s001  S+   10:10AM   0:00.00 grep systemd
+robertpoenaru    74123   0.0  0.0  4400056   1128 s001  S+   10:10AM   0:00.00 /bin/bash -c ps aux | grep systemd

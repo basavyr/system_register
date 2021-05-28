@@ -1,22 +1,4 @@
-robertp+    1637  0.0  0.0  12552  4780 pts/1    Ss+  May27   0:01 /usr/bin/zsh
-robertp+    1684  0.0  0.0  10668  1776 pts/1    S    May27   0:00 /usr/bin/zsh
-robertp+    1881  0.0  0.0  11904  1468 pts/1    S    May27   0:00 /usr/bin/zsh
-robertp+    1883  0.0  0.0  11888   648 pts/1    S    May27   0:00 /usr/bin/zsh
-robertp+    1884  0.0  0.0 138236  3192 pts/1    Sl   May27   0:00 /usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/gitstatusd -G v1.3.1 -s -1 -u -1 -d -1 -c -1 -m -1 -v FATAL -t 16
-robertp+   21955  0.0  0.1  13140  8296 pts/2    Ss   07:27   0:02 /usr/bin/zsh
-robertp+   21962  0.0  0.0  10676  3084 pts/2    S    07:27   0:00 /usr/bin/zsh
-robertp+   22158  0.0  0.0  11884  3292 pts/2    S    07:27   0:00 /usr/bin/zsh
-robertp+   22159  0.0  0.0  11868  2272 pts/2    S    07:27   0:00 /usr/bin/zsh
-robertp+   22161  0.0  0.0 1186992 3236 pts/2    Sl   07:27   0:00 /usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/gitstatusd -G v1.3.1 -s -1 -u -1 -d -1 -c -1 -m -1 -v FATAL -t 16
-robertp+   35559  0.9  0.1  13808  9600 pts/3    Ss+  08:47   0:09 zsh
-robertp+   35566  0.0  0.0  10672  4072 pts/3    S    08:47   0:00 zsh
-robertp+   35751  0.0  0.0  11908  4548 pts/3    S    08:47   0:00 zsh
-robertp+   35752  0.0  0.0  11892  3340 pts/3    S    08:47   0:00 zsh
-robertp+   35754  0.0  0.0 138236  3772 pts/3    Sl   08:47   0:00 /usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/gitstatusd -G v1.3.1 -s -1 -u -1 -d -1 -c -1 -m -1 -v FATAL -t 16
-robertp+   38170  0.1  0.1  12960  8916 pts/4    Ss+  08:55   0:00 zsh
-robertp+   38177  0.0  0.0  10672  4056 pts/4    S    08:55   0:00 zsh
-robertp+   38363  0.0  0.0  11912  4452 pts/4    S    08:55   0:00 zsh
-robertp+   38365  0.0  0.0  11896  3336 pts/4    S    08:55   0:00 zsh
-robertp+   38366  0.0  0.0 138236  3644 pts/4    Sl   08:55   0:00 /usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/gitstatusd -G v1.3.1 -s -1 -u -1 -d -1 -c -1 -m -1 -v FATAL -t 16
-robertp+   41068  0.0  0.0   7264  2900 pts/2    S+   09:05   0:00 /bin/bash -c ps aux | grep zsh
-robertp+   41070  0.0  0.0   6408  2356 pts/2    S+   09:05   0:00 grep zsh
+robertpoenaru    30543   0.0  0.0  4643648   1548 s001  Ss   Thu09AM   0:00.53 /bin/zsh -l
+robertpoenaru     1752   0.0  0.0  4636480      8 s000  Ss+  Tue05PM   0:00.23 /bin/zsh -l
+robertpoenaru    74134   0.0  0.0  4399480    828 s001  S+   10:10AM   0:00.00 grep zsh
+robertpoenaru    74132   0.0  0.0  4402104   1152 s001  S+   10:10AM   0:00.00 /bin/bash -c ps aux | grep zsh
