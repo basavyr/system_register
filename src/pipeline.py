@@ -58,6 +58,7 @@ def Execute_Process_Monitor(execution_time, process_list):
         if(idx > 1 and len(current_instance_stack) and len(previous_instance_stack)):
             changes = procmon.Process.Check_Instance_Change(
                 current_instance_stack, previous_instance_stack)
+            print(f'{current_instance_stack} | {previous_instance_stack} | {changes}')
             procmon.Process.Check_Process_Stop(process_list,
                                                current_instance_stack, previous_instance_stack)
 
@@ -92,10 +93,11 @@ if __name__ == '__main__':
 
     PIPELINE_CLEANUP = False
 
-    PIPELINE_EXECUTION_TIME = 5
+    PIPELINE_EXECUTION_TIME = 30
 
     if(PIPELINE == True):
-        PROCESS_LIST = Create_Process_List()
+        # PROCESS_LIST = Create_Process_List()
+        PROCESS_LIST = ['python']
         PIPELINE_EXECUTION = Execute_Process_Monitor(
             PIPELINE_EXECUTION_TIME, PROCESS_LIST)
         if(PIPELINE_EXECUTION == 1 and PIPELINE_CLEANUP == True):
