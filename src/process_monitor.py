@@ -144,9 +144,9 @@ class Process:
             proc_name = proc[0]
             proc_instances_change = proc[1]
             if(proc_instances_change == 0):
-                print(f'{proc_name} has no active instances')
+                print(f'<<{proc_name}>> has no active instances')
             else:
-                print(f'{proc_name} had {proc_instances_change} changed')
+                print(f'<<{proc_name}>> had {proc_instances_change} changed')
 
     @staticmethod
     def Run_Shell_Command(command):
