@@ -121,8 +121,10 @@ class Process:
         # the real number of active instances is N-2
         # one instance is from the grep itself, the other is for the python script
         real_instances = n_instances - 2
-        if(real_instances < 0 or instances == []):
-            return -1
+        if(real_instances == 0):
+            return 0, []
+        if(real_instances < 0):
+            return -1, []
         return real_instances, instances
 
     @staticmethod

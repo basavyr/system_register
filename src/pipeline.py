@@ -43,6 +43,8 @@ def Execute_Process_Monitor(execution_time, process_list):
                     f'Issue while counting the active instances for [{process}]')
             else:
                 if(process_active_instances_number == 0):
+                    print(
+                        f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
                     if(debug_mode):
                         print(
                             f'<<{process}>> -> No active instances found')
