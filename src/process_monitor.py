@@ -140,8 +140,11 @@ class Process:
             current_stack, previous_stack)
 
         idx = 0
-        for proc in process_list:
-            print(proc)
+        for proc in zip(process_list, instance_changes):
+            proc_name = proc[0]
+            proc_instances_change = proc[1]
+            if(proc_instances_change == 0):
+                print(f'{proc_name} has no active instances')
 
     @staticmethod
     def Run_Shell_Command(command):
