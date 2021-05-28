@@ -14,7 +14,7 @@ watch = register.Monitoring
 
 def Execute_Process_Monitor(execution_time, process_list):
 
-    debug_mode = True
+    debug_mode = False
 
     runtime = True
 
@@ -40,10 +40,13 @@ def Execute_Process_Monitor(execution_time, process_list):
             else:
                 if(process_active_instances_number == 0):
                     print(
-                        f'No active instances found')
+                        f'<<{process}>> -> No active instances found')
                 else:
+                    if(debug_mode):
+                        print(
+                            f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
                     print(
-                        f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
+                        f'<<{process}>> -> {process_active_instances_number} active instances found')
 
         # stop the execution pipeline after the runtime reachers execution time
         if(now() - start_time >= execution_time):
@@ -57,24 +60,30 @@ def Execute_Process_Monitor(execution_time, process_list):
     return 0
 
 
-if __name__ == '__main__':
-
-    PIPELINE = True
-
+def Create_Process_List():
     # Create the process list and save it to a file
     watch.Create_External_Process_List(
         register.Register.process_list_file_name)
     PROCESS_LIST = watch.Get_Processes_From_Process_List(
         register.Register.process_list_file_name)
+    return PROCESS_LIST
 
-    CLEANUP = True
 
-    EXECUTION_TIME = 3
+if __name__ == '__main__':
+
+    PIPELINE = True
+
+    PIPELINE_CLEANUP = True
+
+    PIPELINE_EXECUTION_TIME = 3
 
     if(PIPELINE == True):
+        PROCESS_LIST = Create_Process_List()
         PIPELINE_EXECUTION = Execute_Process_Monitor(
-            EXECUTION_TIME, PROCESS_LIST)
-        if(PIPELINE_EXECUTION and CLEANUP == True):
+            PIPELINE_EXECUTION_TIME, PROCESS_LIST)
+        if(PIPELINE_EXECUTION == True and PIPELINE_CLEANUP == True):
             print('Doing cleanup...')
             reg.Clean_All(reg.register_directory)
             watch.Purge_External_Process_List(reg.process_list_file_name)
+        else:
+            print('The process monitor failed...')
