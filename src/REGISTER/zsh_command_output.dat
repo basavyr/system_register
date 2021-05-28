@@ -1,0 +1,12 @@
+robertp+    1637  0.0  0.0  12552  4620 pts/1    Ss+  May27   0:01 /usr/bin/zsh
+robertp+    1684  0.0  0.0  10668  1736 pts/1    S    May27   0:00 /usr/bin/zsh
+robertp+    1881  0.0  0.0  11904  1444 pts/1    S    May27   0:00 /usr/bin/zsh
+robertp+    1883  0.0  0.0  11888   648 pts/1    S    May27   0:00 /usr/bin/zsh
+robertp+    1884  0.0  0.0 138236  2688 pts/1    Sl   May27   0:00 /usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/gitstatusd -G v1.3.1 -s -1 -u -1 -d -1 -c -1 -m -1 -v FATAL -t 16
+robertp+   21955  0.0  0.1  13076  8208 pts/2    Ss   07:27   0:04 /usr/bin/zsh
+robertp+   21962  0.0  0.0  10676  3044 pts/2    S    07:27   0:00 /usr/bin/zsh
+robertp+   22158  0.0  0.0  11884  3268 pts/2    S    07:27   0:00 /usr/bin/zsh
+robertp+   22159  0.0  0.0  11868  2272 pts/2    S    07:27   0:00 /usr/bin/zsh
+robertp+   22161  0.0  0.0 1187004 3612 pts/2    Sl   07:27   0:00 /usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/gitstatusd -G v1.3.1 -s -1 -u -1 -d -1 -c -1 -m -1 -v FATAL -t 16
+robertp+   62102  0.0  0.0   7264  2892 pts/2    S+   16:40   0:00 /bin/bash -c ps aux | grep zsh
+robertp+   62104  0.0  0.0   6408  2232 pts/2    S+   16:40   0:00 grep zsh

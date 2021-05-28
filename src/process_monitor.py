@@ -131,8 +131,17 @@ class Process:
     def Check_Instance_Change(current_stack, previous_stack):
         changes = [current_stack[idx] - previous_stack[idx]
                    for idx in range(len(current_stack))]
-        
         return(changes)
+
+    @staticmethod
+    def Check_Process_Stop(process_list, current_stack, previous_stack):
+        """shows which processes have instances that stopped running"""
+        instance_changes = Process.Check_Instance_Change(
+            current_stack, previous_stack)
+
+        idx = 0
+        for proc in process_list:
+            print(proc)
 
     @staticmethod
     def Run_Shell_Command(command):

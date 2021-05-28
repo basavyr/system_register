@@ -29,7 +29,8 @@ def Execute_Process_Monitor(execution_time, process_list):
         print(f'\nIteration #{idx}...\n')
 
         for process in process_list:
-            print(f'<<{process}>>')
+            if(debug_mode):
+                print(f'<<{process}>>')
             if(debug_mode):
                 print(f'will analyze active instances for <<{process}>>')
             grepped_ps_command = procmon.Utils.make_ps_grep_process(process)
@@ -57,10 +58,8 @@ def Execute_Process_Monitor(execution_time, process_list):
         if(idx > 1 and len(current_instance_stack) and len(previous_instance_stack)):
             changes = procmon.Process.Check_Instance_Change(
                 current_instance_stack, previous_instance_stack)
-            if(any(changes)):
-                print(current_instance_stack)
-                print(previous_instance_stack)
-                print(changes)
+            procmon.Process.Check_Process_Stop(process_list,
+                                               current_instance_stack, previous_instance_stack)
 
         # stop the execution pipeline after the runtime reachers execution time
         if(now() - start_time >= execution_time):
@@ -91,7 +90,7 @@ if __name__ == '__main__':
 
     PIPELINE = True
 
-    PIPELINE_CLEANUP = True
+    PIPELINE_CLEANUP = False
 
     PIPELINE_EXECUTION_TIME = 5
 
