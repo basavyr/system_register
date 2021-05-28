@@ -29,8 +29,8 @@ def Execute_Process_Monitor(execution_time, process_list):
         print(f'\nIteration #{idx}...\n')
 
         for process in process_list:
-            if(debug_mode):
-                print(f'<<{process}>>')
+            # if(debug_mode):
+            print(f'<<{process}>>')
             if(debug_mode):
                 print(f'will analyze active instances for <<{process}>>')
             grepped_ps_command = procmon.Utils.make_ps_grep_process(process)
