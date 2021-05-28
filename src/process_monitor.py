@@ -128,6 +128,13 @@ class Process:
         return real_instances, instances
 
     @staticmethod
+    def Check_Instance_Change(current_stack, previous_stack):
+        changes = [current_stack[idx] - previous_stack[idx]
+                   for idx in range(len(current_stack))]
+        
+        return(changes)
+
+    @staticmethod
     def Run_Shell_Command(command):
         """
         Execute a shell-specific command within a Python method

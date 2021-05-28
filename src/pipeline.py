@@ -20,9 +20,6 @@ def Execute_Process_Monitor(execution_time, process_list):
 
     idx = 1
 
-    current_instance_number = -1
-    previous_instance_number = -1
-
     current_instance_stack = []
     previous_instance_stack = []
 
@@ -47,21 +44,23 @@ def Execute_Process_Monitor(execution_time, process_list):
             else:
                 current_instance_stack.append(process_active_instances_number)
                 if(process_active_instances_number == 0):
-                    print(
-                        f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
                     if(debug_mode):
                         print(
                             f'<<{process}>> -> No active instances found')
                 else:
-                    # if(debug_mode):
-                    # print(
-                    #     f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
+                    if(debug_mode):
+                        print(
+                            f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
                     if(debug_mode):
                         print(
                             f'<<{process}>> -> {process_active_instances_number} active instances found')
         if(idx > 1 and len(current_instance_stack) and len(previous_instance_stack)):
-            print(current_instance_stack)
-            print(previous_instance_stack)
+            changes = procmon.Process.Check_Instance_Change(
+                current_instance_stack, previous_instance_stack)
+            if(any(changes)):
+                print(current_instance_stack)
+                print(previous_instance_stack)
+                print(changes)
 
         # stop the execution pipeline after the runtime reachers execution time
         if(now() - start_time >= execution_time):
@@ -92,9 +91,9 @@ if __name__ == '__main__':
 
     PIPELINE = True
 
-    PIPELINE_CLEANUP = False
+    PIPELINE_CLEANUP = True
 
-    PIPELINE_EXECUTION_TIME = 3
+    PIPELINE_EXECUTION_TIME = 5
 
     if(PIPELINE == True):
         PROCESS_LIST = Create_Process_List()
