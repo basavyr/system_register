@@ -104,6 +104,11 @@ class Process:
 
     @staticmethod
     def Get_Active_Instances(process):
+        """
+        Searches for every instances which belongs to `process` that is running on the machine with a given PID.
+        Returns a tuple, with the total number of instances and a list of all instances. 
+
+        """
         process_file = Utils.get_process_file(process)
         # the path of the process file must be changed to the directory in which the lists are stored
         register_process_file = f'{register.Register.register_directory}/{process_file}'
@@ -118,7 +123,7 @@ class Process:
         real_instances = n_instances - 2
         if(real_instances < 0 or instances == []):
             return -1
-        return real_instances
+        return real_instances, instances
 
     @staticmethod
     def Run_Shell_Command(command):

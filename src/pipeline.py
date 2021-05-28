@@ -30,20 +30,20 @@ def Execute_Process_Monitor(execution_time, process_list):
                 print(f'will analyze active instances for <<{process}>>')
             grepped_ps_command = procmon.Utils.make_ps_grep_process(process)
             procmon.Process.Run_Shell_Command(grepped_ps_command)
-            process_active_instances = procmon.Process.Get_Active_Instances(
+            process_active_instances_number, process_active_instances_list = procmon.Process.Get_Active_Instances(
                 process)
             try:
-                assert process_active_instances >= 0, f'Issue while counting the active instances for [{process}]'
+                assert process_active_instances_number >= 0, f'Issue while counting the active instances for [{process}]'
             except AssertionError:
                 print(
                     f'Issue while counting the active instances for [{process}]')
             else:
-                if(process_active_instances == 0):
+                if(process_active_instances_number == 0):
                     print(
                         f'No active instances found')
                 else:
                     print(
-                        f'( {process_active_instances} ) Active instances found')
+                        f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
 
         # stop the execution pipeline after the runtime reachers execution time
         if(now() - start_time >= execution_time):

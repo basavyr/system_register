@@ -1,2 +1,0 @@
-robertpoenaru    68231   0.0  0.0  4399480    828 s001  S+   10:06PM   0:00.00 grep systemd
-robertpoenaru    68229   0.0  0.0  4409272   1144 s001  S+   10:06PM   0:00.00 /bin/bash -c ps aux | grep systemd
