@@ -20,6 +20,9 @@ def Execute_Process_Monitor(execution_time, process_list):
 
     idx = 1
 
+    current_instance_number = -1
+    previous_instance_number = -1
+
     start_time = now()
     while(runtime):
 
@@ -39,23 +42,34 @@ def Execute_Process_Monitor(execution_time, process_list):
                     f'Issue while counting the active instances for [{process}]')
             else:
                 if(process_active_instances_number == 0):
-                    print(
-                        f'<<{process}>> -> No active instances found')
+                    if(debug_mode):
+                        print(
+                            f'<<{process}>> -> No active instances found')
                 else:
                     if(debug_mode):
                         print(
                             f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
-                    print(
-                        f'<<{process}>> -> {process_active_instances_number} active instances found')
+                    if(debug_mode):
+                        print(
+                            f'<<{process}>> -> {process_active_instances_number} active instances found')
+            current_instance_number = process_active_instances_number
+
+            if(current_instance_number >= 0 and previous_instance_number >= 0):
+                print(
+                    f'current: {current_instance_number} , previous: {previous_instance_number}')
+
+            previous_instance_number = current_instance_number
 
         # stop the execution pipeline after the runtime reachers execution time
         if(now() - start_time >= execution_time):
             runtime = False
             break
+
+        # continue the monitor loop if the total runtime does not exceed the allowed execution
         idx += 1
         time.sleep(5)
 
-    if(runtime == False and idx):
+    if(runtime == False and idx > 1):
         return 1
     return 0
 
@@ -73,7 +87,7 @@ if __name__ == '__main__':
 
     PIPELINE = True
 
-    PIPELINE_CLEANUP = True
+    PIPELINE_CLEANUP = False
 
     PIPELINE_EXECUTION_TIME = 3
 
@@ -81,9 +95,9 @@ if __name__ == '__main__':
         PROCESS_LIST = Create_Process_List()
         PIPELINE_EXECUTION = Execute_Process_Monitor(
             PIPELINE_EXECUTION_TIME, PROCESS_LIST)
-        if(PIPELINE_EXECUTION == True and PIPELINE_CLEANUP == True):
+        if(PIPELINE_EXECUTION == 1 and PIPELINE_CLEANUP == True):
             print('Doing cleanup...')
             reg.Clean_All(reg.register_directory)
             watch.Purge_External_Process_List(reg.process_list_file_name)
-        else:
+        elif(PIPELINE_EXECUTION == 0):
             print('The process monitor failed...')
