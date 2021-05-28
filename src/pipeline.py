@@ -23,6 +23,9 @@ def Execute_Process_Monitor(execution_time, process_list):
     current_instance_number = -1
     previous_instance_number = -1
 
+    current_instance_stack = []
+    previous_instance_stack = []
+
     start_time = now()
     while(runtime):
 
@@ -42,6 +45,7 @@ def Execute_Process_Monitor(execution_time, process_list):
                 print(
                     f'Issue while counting the active instances for [{process}]')
             else:
+                current_instance_stack.append(process_active_instances_number)
                 if(process_active_instances_number == 0):
                     print(
                         f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
@@ -49,21 +53,15 @@ def Execute_Process_Monitor(execution_time, process_list):
                         print(
                             f'<<{process}>> -> No active instances found')
                 else:
-                    print(
-                        f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
                     # if(debug_mode):
-                        # print(
-                        #     f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
+                    # print(
+                    #     f'( {process_active_instances_number} ) Active instances found\n{process_active_instances_list}')
                     if(debug_mode):
                         print(
                             f'<<{process}>> -> {process_active_instances_number} active instances found')
-            current_instance_number = process_active_instances_number
-
-            if(current_instance_number >= 0 and previous_instance_number >= 0 and idx > 1):
-                print(
-                    f'current: {current_instance_number} , previous: {previous_instance_number}')
-
-            previous_instance_number = current_instance_number
+        if(idx > 1 and len(current_instance_stack) and len(previous_instance_stack)):
+            print(current_instance_stack)
+            print(previous_instance_stack)
 
         # stop the execution pipeline after the runtime reachers execution time
         if(now() - start_time >= execution_time):
@@ -72,7 +70,9 @@ def Execute_Process_Monitor(execution_time, process_list):
 
         # continue the monitor loop if the total runtime does not exceed the allowed execution
         idx += 1
-        time.sleep(5)
+        previous_instance_stack = current_instance_stack
+        current_instance_stack.clear()
+        time.sleep(1)
 
     if(runtime == False and idx > 1):
         return 1
