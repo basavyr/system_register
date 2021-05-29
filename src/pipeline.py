@@ -30,7 +30,7 @@ def Execute_Process_Monitor(execution_time, process_list):
 
         for process in process_list:
             # if(debug_mode):
-            print(f'<<{process}>>')
+            # print(f'<<{process}>>')
             if(debug_mode):
                 print(f'will analyze active instances for <<{process}>>')
             grepped_ps_command = procmon.Utils.make_ps_grep_process(process)
@@ -58,7 +58,8 @@ def Execute_Process_Monitor(execution_time, process_list):
         if(idx > 1 and len(current_instance_stack) and len(previous_instance_stack)):
             changes = procmon.Process.Check_Instance_Change(
                 current_instance_stack, previous_instance_stack)
-            print(f'{current_instance_stack} | {previous_instance_stack} | {changes}')
+            print(
+                f'Active instances for all processes: <<{current_instance_stack}>>')
             procmon.Process.Check_Process_Stop(process_list,
                                                current_instance_stack, previous_instance_stack)
 
