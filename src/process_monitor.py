@@ -2,7 +2,7 @@
 import os
 import subprocess
 import time
-import register
+from . import register
 
 
 class Utils:

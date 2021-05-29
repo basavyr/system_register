@@ -1,6 +1,6 @@
-import register
+from . import register
+from . import process_monitor as procmon
 import time
-import process_monitor as procmon
 
 
 def now():
