@@ -69,7 +69,7 @@ def Execute_Process_Monitor(execution_time, process_list):
 
         # continue the monitor loop if the total runtime does not exceed the allowed execution
         idx += 1
-        previous_instance_stack = current_instance_stack
+        previous_instance_stack = list(current_instance_stack)
         current_instance_stack.clear()
         time.sleep(1)
 
