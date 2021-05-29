@@ -88,6 +88,10 @@ def Create_Process_List():
     return PROCESS_LIST
 
 
+def SayHi():
+    return 'hi'
+
+
 if __name__ == '__main__':
 
     PIPELINE = True

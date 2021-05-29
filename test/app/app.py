@@ -1,0 +1,2 @@
+def SayHi():
+	return 'hi'
