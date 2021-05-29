@@ -1,2 +1,5 @@
+from . import mega
+
+
 def SayHi():
-	return 'hi'
+    return f'hi -> {mega.Give_Mega()}'
