@@ -134,6 +134,10 @@ class Process:
         return(changes)
 
     @staticmethod
+    def Instance_Internal_State(instance_change):
+        return 1
+
+    @staticmethod
     def Check_Process_Stop(process_list, current_stack, previous_stack):
         """shows which processes have instances that stopped running"""
         instance_changes = Process.Check_Instance_Change(
@@ -144,9 +148,13 @@ class Process:
             proc_name = proc[0]
             proc_instances_change = proc[1]
             if(proc_instances_change == 0):
-                print(f'<<{proc_name}>> has no active instances')
-            else:
-                print(f'<<{proc_name}>> had {proc_instances_change} changed')
+                print(f'<<{proc_name}>> | No changes within instances')
+            elif proc_instances_change < 0:
+                print(
+                    f'<<{proc_name}>> | {abs(proc_instances_change)} stopped instances')
+            elif proc_instances_change > 0:
+                print(
+                    f'<<{proc_name}>> | {abs(proc_instances_change)} new spawned instances')
 
     @staticmethod
     def Run_Shell_Command(command):
