@@ -1,4 +1,4 @@
 FROM python:latest
 COPY . .
-CMD ["src/pipeline.py"]
+CMD ["test_pipeline.py"]
 ENTRYPOINT ["python3"]
