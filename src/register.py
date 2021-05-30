@@ -14,6 +14,8 @@ class Monitoring:
         "PY": 'python',
         "MD": 'systemd',
         "BASH": 'bash',
+        "SH": 'shell',
+        "ZSH": 'zsh'
     }
 
     @staticmethod
@@ -46,15 +48,14 @@ class Monitoring:
         return proc_list
 
     @staticmethod
-    def Purge_External_Process_List(process_list):
-        process_list_file = Monitoring.Create_Process_Filename(process_list)
-        # print(process_list_file)
-        file_exists = os.path.isfile(process_list_file)
-        # print(file_exists)
+    def Purge_External_Process_List(process_list_file):
+        process_list_filename = Monitoring.Create_Process_Filename(
+            process_list_file)
+        file_exists = os.path.isfile(process_list_filename)
         if(file_exists):
-            print('Removing external process list file')
+            # print('Removing external process list file')
             try:
-                os.remove(process_list_file)
+                os.remove(process_list_filename)
             except OSError as error:
                 print(
                     f'Error while trying to remove the process file\n{error}')
@@ -80,6 +81,9 @@ class Utils:
 
 
 class Register:
+
+    register_directory = 'REGISTER'
+    process_list_file_name = 'PROCESSES'
 
     @staticmethod
     def Create_Register_Directory(dir_name):
@@ -122,4 +126,37 @@ class Register:
         if os.path.exists(process_file):
             os.remove(process_file)
         else:
+            pass
+
+    @staticmethod
+    def Purge_Register_Files(dir_name):
+        try:
+            dir_size = os.listdir(dir_name)
+        except OSError:
+            pass
+        if(len(dir_size) > 0):
+            purge_mode = True
+        else:
+            purge_mode = False
+        if(purge_mode):
+            for root, _, files in os.walk(dir_name):
+                for file in files:
+                    try:
+                        os.remove(os.path.join(root, file))
+                    except OSError:
+                        pass
+
+    @staticmethod
+    def Purge_Register_Directory(dir_name):
+        try:
+            os.rmdir(dir_name)
+        except OSError:
+            pass
+
+    @staticmethod
+    def Clean_All(dir_name):
+        try:
+            Register.Purge_Register_Files(dir_name)
+            Register.Purge_Register_Directory(dir_name)
+        except OSError:
             pass

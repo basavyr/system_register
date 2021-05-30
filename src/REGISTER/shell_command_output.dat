@@ -1,0 +1,5 @@
+robertp+    1350  0.3  3.6 3339672 291896 ?      Sl   May27   8:16 /usr/bin/plasmashell
+robertp+   75408  0.0  0.2 331100 23476 ?        Sl   21:14   0:00 http.so [kdeinit5] https local:/run/user/1000/klauncherrFKlPH.1.slave-socket local:/run/user/1000/plasmashelldqXDHV.116.slave-socket
+robertp+   75409  0.0  0.2 331104 22552 ?        Sl   21:14   0:00 http.so [kdeinit5] https local:/run/user/1000/klauncherrFKlPH.1.slave-socket local:/run/user/1000/plasmashellzojFRZ.117.slave-socket
+robertp+   76319  0.0  0.0   7264  2912 pts/2    S+   21:18   0:00 /bin/bash -c ps aux | grep shell
+robertp+   76321  0.0  0.0   6408  2228 pts/2    S+   21:18   0:00 grep shell

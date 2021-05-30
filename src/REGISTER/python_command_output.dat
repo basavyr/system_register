@@ -1,0 +1,5 @@
+robertp+    2111  0.0  0.1 113824  9836 ?        Sl   May27   0:37 python3 /usr/bin/libinput-gestures
+robertp+   22312  0.2  2.0 8839944 165244 ?      Sl   May28   4:18 /var/lib/snapd/snap/code/65/usr/share/code/code /home/robertpoenaru/.vscode/extensions/ms-python.vscode-pylance-2021.5.4/dist/server.bundle.js --cancellationReceive=file:88596fc6a8c2af71b0da144af60f880ede3f2f4645 --node-ipc --clientProcessId=21876
+robertp+  149820  0.3  0.1  14604  9812 pts/2    S+   09:38   0:00 /usr/bin/python pipeline.py
+robertp+  151038  0.0  0.0   7264  2784 pts/2    S+   09:38   0:00 /bin/bash -c ps aux | grep python
+robertp+  151040  0.0  0.0   6408  2196 pts/2    S+   09:38   0:00 grep python
