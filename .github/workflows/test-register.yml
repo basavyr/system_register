@@ -24,5 +24,4 @@ jobs:
         python -m pip install --upgrade pip
     - name: Run application
       run: |
-        cd src/
-        python pipeline.py
+        python test_pipeline.py
