@@ -132,7 +132,8 @@ class Register:
     def Purge_Register_Files(dir_name):
         try:
             dir_size = os.listdir(dir_name)
-        except OSError:
+        except OSError as error:
+            print(f'in purge files -> {error}')
             pass
         if(len(dir_size) > 0):
             purge_mode = True

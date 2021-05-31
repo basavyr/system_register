@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
     PIPELINE = True
 
-    PIPELINE_CLEANUP = False
+    PIPELINE_CLEANUP = True
 
     PIPELINE_EXECUTION_TIME = 30
 
