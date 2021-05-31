@@ -41,12 +41,13 @@ def Test_Process_File():
 def Test_Cleaning_Procedure():
     fail_value = 1
     try:
-        dirname = register.Register.register_directory
-        register.Register.Clean_All(dirname)
-        print(dirname)
-    except Exception as exc:
+        # adjust the pipeline such that the register directory is above the tests
+        new_dir = '../src/' + register.Register.register_directory
+        # print(os.path.isdir(new_dir))
+        register.Register.Clean_All(new_dir)
+    except Exception:
         fail_value = 1
-        print(exc)
+        # print(f'in total cleaning -> {exc}')
     else:
         fail_value = 0
 
