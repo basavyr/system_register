@@ -36,9 +36,9 @@ def Test_Process_File():
         fail_status = 0
 
     if(fail_status):
-        print('Test failed.')
+        print('Test failed! ❌')
     else:
-        print('Success!')
+        print('Success! ✅')
 
 
 def Test_Cleaning_Procedure():
@@ -56,9 +56,9 @@ def Test_Cleaning_Procedure():
         fail_value = 0
 
     if(fail_value == 0):
-        print('Success!')
+        print('Success! ✅')
     else:
-        print('Test failed.')
+        print('Test failed! ❌')
 
 
 if __name__ == '__main__':

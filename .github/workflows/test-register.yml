@@ -24,4 +24,4 @@ jobs:
         python -m pip install --upgrade pip
     - name: Run application
       run: |
-        python test_pipeline.py
+        python3 tests/test_pipeline.py
