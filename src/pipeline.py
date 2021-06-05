@@ -84,9 +84,10 @@ def Execute_Process_Monitor(execution_time, process_list):
 def Create_Process_List():
     # Create the process list and save it to a file
     watch.Create_External_Process_List(
-        register.Register.process_list_file_name)
+        register.process_list_file_name)
+
     PROCESS_LIST = watch.Get_Processes_From_Process_List(
-        register.Register.process_list_file_name)
+        register.process_list_file_name)
     return PROCESS_LIST
 
 
