@@ -7,14 +7,17 @@ import sys
 
 
 try:
-    from ..src import pipeline
-    from ..src import process_monitor
-    from ..src import register
-except ImportError:
-    sys.path.append('../')
-    from src import pipeline
-    from src import process_monitor
-    from src import register
+    sys.path.insert(1, '../')
+    import src.process_monitor as procmon
+    import src.pipeline as pipeline
+    import src.register as register
+except ModuleNotFoundError:
+    sys.path.insert(1, '')
+    import src.register as register
+    import src.pipeline as pipeline
+    import src.process_monitor as procmon
+else:
+    print('Importing finished ✅')
 
 
 def Test_Process_File():
@@ -43,6 +46,7 @@ def Test_Cleaning_Procedure():
     try:
         # adjust the pipeline such that the register directory is above the tests
         new_dir = '../src/' + register.Register.register_directory
+        # print(os.path.abspath (new_dir))
         # print(os.path.isdir(new_dir))
         register.Register.Clean_All(new_dir)
     except Exception:

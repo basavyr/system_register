@@ -1,15 +1,15 @@
-from . import register
-from . import process_monitor as procmon
+import sys
 import time
+
+from src import process_monitor as procmon
+from src import register
+from src.register import Monitoring as watch
+reg = register.Register
+tools = register.Utils
 
 
 def now():
     return time.time()
-
-
-reg = register.Register
-tools = register.Utils
-watch = register.Monitoring
 
 
 def Execute_Process_Monitor(execution_time, process_list):
@@ -32,7 +32,7 @@ def Execute_Process_Monitor(execution_time, process_list):
             # if(debug_mode):
             # print(f'<<{process}>>')
             if(debug_mode):
-                print(f'will analyze active instances for <<{process}>>')
+                print(f'Will analyze active instances for <<{process}>>')
             grepped_ps_command = procmon.Utils.make_ps_grep_process(process)
             procmon.Process.Run_Shell_Command(grepped_ps_command)
             process_active_instances_number, process_active_instances_list = procmon.Process.Get_Active_Instances(
