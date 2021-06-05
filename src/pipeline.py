@@ -2,10 +2,11 @@ import sys
 import time
 
 from src import process_monitor as procmon
-from src import register
-from src.register import Monitoring as watch
-reg = register.Register
-tools = register.Utils
+
+register = procmon.Register
+watch = procmon.Monitoring
+reg = procmon.Register
+tools = procmon.Utils
 
 
 def now():
